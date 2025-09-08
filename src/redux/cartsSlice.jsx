@@ -1,11 +1,18 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
 
-
 const initialState = {
-  cartItems: localStorage.getItem("cartItems") ? JSON.parse(localStorage.getItem("cartItems")) :[],
-  cartTotalQuantinty: 0,
+  cartItems: localStorage.getItem("cartItems") ? JSON.parse(localStorage.getItem("cartItems")) : [],
+  cartTotalQuantity: 0,
   cartTotalAmount: 0,
+};
+
+const calculateTotal = (cartItems) => {
+  let totalAmount = 0;
+  cartItems.forEach(item => {
+    totalAmount += item.cartQuantity * item.price;
+  });
+  return totalAmount;
 };
 
 const cartSlice = createSlice({
@@ -17,22 +24,20 @@ const cartSlice = createSlice({
         (item) => item.id === action.payload.id
       );
       if (itemIndex >= 0) {
-        state.cartItems[itemIndex].cartQuantinty += 1;
-        toast.info(`increased  ${state.cartItems[itemIndex].name}  Quantity`,{
-            position: "bottom-left"
-        })
+        state.cartItems[itemIndex].cartQuantity += 1; 
+        toast.info(`Increased ${state.cartItems[itemIndex].name} Quantity`, {
+          position: "bottom-left",
+        });
       } else {
-        const temptProduct = { ...action.payload, cartQuantinty: 1 };
-        state.cartItems.push(temptProduct);
-         toast.success(`${action.payload.name} added to cart` ,{
-            position: "bottom-left"
-        })
+        const tempProduct = { ...action.payload, cartQuantity: 1 }; 
+        state.cartItems.push(tempProduct);
+        toast.success(`${action.payload.name} added to cart`, {
+          position: "bottom-left",
+        });
       }
-            localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
-
-      
+      state.cartTotalAmount = calculateTotal(state.cartItems);
+      localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
     },
-    
   },
 });
 
