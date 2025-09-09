@@ -1,12 +1,44 @@
-# React + Vite
+# React Shopping Cart with Redux Toolkit
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
 
-Currently, two official plugins are available:
+This project is a **React.js shopping cart** application that demonstrates the use of **Redux Toolkit** for state management. It features a simple **Node.js backend** API, utilizes **local storage** to persist the cart state, and incorporates **notifications** using **React Toast** for a better user experience.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The project is structured into two main folders: `backend` and `frontend`, allowing for a clear separation of concerns between the server-side and client-side code.
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Redux Toolkit** for efficient state management
+- Simple **Node.js backend** API
+- **Local Storage** for saving the cart state
+- User notifications powered by **React Toast**
+- Responsive design for a better user experience
+
+## Prerequisites
+
+- Node.js (v22.19.0 or later)
+- npm (Node Package Manager)
+
+## Setup Instructions
+
+Follow the steps below to run the application:
+
+### 1. Start the Backend Server
+
+Navigate to the backend folder and install dependencies:
+
+````sh
+cd backend
+npm install
+npx nodemon index.js
+````
+
+### 2. Start the Frontend 
+
+Navigate to the backend folder and install dependencies:
+
+````sh
+cd frontend
+npm install
+npm run dev
+````
